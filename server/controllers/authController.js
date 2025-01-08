@@ -18,12 +18,10 @@ const generateAndSendToken = (res, id) => {
 
 const signUp = async (req, res, next) => {
   try {
-    const { fullname, username, email, gender, password, passwordConfirm } =
-      req.body;
+    const { fullname, username, gender, password, passwordConfirm } = req.body;
     const newUser = await User.create({
       fullname,
       username,
-      email,
       gender,
       password,
       passwordConfirm,
