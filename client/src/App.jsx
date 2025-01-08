@@ -6,7 +6,7 @@ import SignUp from "./pages/SignUp";
 function App() {
   return (
     <BrowserRouter>
-      <div className="p-4 h-screen flex items-center justify-center bg-slate-300">
+      <div className="p-4 h-screen flex items-center justify-center ">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
