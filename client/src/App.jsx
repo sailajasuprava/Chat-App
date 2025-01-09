@@ -6,22 +6,22 @@ import SignUp from "./pages/SignUp";
 import { useAuth } from "./context/authContext";
 
 function App() {
-  const { user } = useAuth();
+  const { auth } = useAuth();
   return (
     <BrowserRouter>
       <div className="p-4 h-screen flex items-center justify-center bg-slate-900">
         <Routes>
           <Route
             path="/"
-            element={user ? <Home /> : <Navigate to="/login" />}
+            element={auth ? <Home /> : <Navigate to="/login" />}
           />
           <Route
             path="/login"
-            element={user ? <Navigate to="/" /> : <Login />}
+            element={auth ? <Navigate to="/" /> : <Login />}
           />
           <Route
             path="/signup"
-            element={user ? <Navigate to="/" /> : <SignUp />}
+            element={auth ? <Navigate to="/" /> : <SignUp />}
           />
         </Routes>
         <Toaster />

@@ -11,7 +11,7 @@ function useSignUp() {
     passwordConfirm: "",
     gender: "",
   });
-  const { setUser } = useAuth();
+  const { setAuth } = useAuth();
 
   function handleInputs(e) {
     setInputs({ ...inputs, [e.target.name]: e.target.value });
@@ -55,7 +55,7 @@ function useSignUp() {
 
       toast.success(data.message);
       localStorage.setItem("chatapp", data.userId);
-      setUser(data.userId);
+      setAuth(data.userId);
       setInputs({
         fullname: "",
         username: "",

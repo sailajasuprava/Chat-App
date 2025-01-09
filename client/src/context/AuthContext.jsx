@@ -4,9 +4,9 @@ const AuthContext = createContext();
 
 // eslint-disable-next-line react/prop-types
 function AuthProvider({ children }) {
-  const [user, setUser] = useState(localStorage.getItem("chatapp"));
+  const [auth, setAuth] = useState(localStorage.getItem("chatapp"));
   return (
-    <AuthContext.Provider value={{ user, setUser }}>
+    <AuthContext.Provider value={{ auth, setAuth }}>
       {children}
     </AuthContext.Provider>
   );

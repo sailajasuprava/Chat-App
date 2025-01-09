@@ -4,7 +4,7 @@ import toast from "react-hot-toast";
 
 function useLogout() {
   const [isLoading, setIsLoading] = useState(false);
-  const { setUser } = useAuth();
+  const { setAuth } = useAuth();
 
   async function handleLogout() {
     setIsLoading(true);
@@ -18,7 +18,7 @@ function useLogout() {
 
       toast.success(data.message);
       localStorage.removeItem("chatapp");
-      setUser(null);
+      setAuth(null);
     } catch (error) {
       toast.error(error.message);
     } finally {

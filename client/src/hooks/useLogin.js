@@ -8,7 +8,7 @@ function useLogin() {
     username: "",
     password: "",
   });
-  const { setUser } = useAuth();
+  const { setAuth } = useAuth();
 
   function handleInputs(e) {
     setInputs({ ...inputs, [e.target.name]: e.target.value });
@@ -44,7 +44,7 @@ function useLogin() {
 
       toast.success(data.message);
       localStorage.setItem("chatapp", data.userId);
-      setUser(data.userId);
+      setAuth(data.userId);
       setInputs({
         username: "",
         password: "",

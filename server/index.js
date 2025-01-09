@@ -7,6 +7,7 @@ const globalErrorHandler = require("./controllers/errorController");
 const AppError = require("./utils/appArror");
 const authRouter = require("./routes/authRoutes");
 const messageRouter = require("./routes/messageRoutes");
+const userRouter = require("./routes/userRoutes");
 
 const port = process.env.PORT || 3000;
 const DB = process.env.DB_URL;
@@ -24,7 +25,8 @@ mongoose
 app.use(express.json());
 app.use(cookieParser());
 app.use("/api/auth", authRouter);
-app.use("/api/message", messageRouter);
+app.use("/api/messages", messageRouter);
+app.use("/api/users", userRouter);
 
 app.all("*", (req, res, next) => {
   next(new AppError(`This route ${req.originalUrl} doesn't exist.`, 404));
