@@ -9,7 +9,7 @@ function useSignUp() {
     username: "",
     password: "",
     passwordConfirm: "",
-    gender: "female",
+    gender: "",
   });
   const { setUser } = useAuth();
 
@@ -61,7 +61,7 @@ function useSignUp() {
         username: "",
         password: "",
         passwordConfirm: "",
-        gender: "female",
+        gender: "",
       });
     } catch (error) {
       toast.error(error.message);

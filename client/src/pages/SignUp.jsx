@@ -68,6 +68,26 @@ function SignUp() {
             />
           </div>
 
+          <div>
+            <label className="label">
+              <span className="text-base label-text">Gender</span>
+            </label>
+            <input
+              name="gender"
+              value="male"
+              onChange={handleInputs}
+              type="radio"
+            />
+            Male
+            <input
+              name="gender"
+              value="female"
+              onChange={handleInputs}
+              type="radio"
+            />
+            Female
+          </div>
+
           {/* <GenderCheckbox /> */}
 
           <Link
