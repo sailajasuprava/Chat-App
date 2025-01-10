@@ -4,7 +4,7 @@ import Message from "./Message";
 import { useConversation } from "../../context/ConversationContext";
 
 function Messages() {
-  const { selectedUser } = useConversation();
+  const { selectedUser, messages, setMessages } = useConversation();
 
   useEffect(() => {
     async function fetchMessages() {
@@ -14,24 +14,21 @@ function Messages() {
         if (!res.ok) {
           throw new Error(data.message);
         }
-        console.log(data);
+
+        setMessages(data.data);
       } catch (error) {
         toast.error(error.message);
       }
     }
     fetchMessages();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedUser]);
 
   return (
     <div className="px-4 flex-1 overflow-auto">
-      <Message />
-      <Message />
-      <Message />
-      <Message />
-      <Message />
-      <Message />
-      <Message />
-      <Message />
+      {messages.map((msg, i) => (
+        <Message key={i} msg={msg} />
+      ))}
     </div>
   );
 }

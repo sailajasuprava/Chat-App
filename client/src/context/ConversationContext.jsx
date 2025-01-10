@@ -2,11 +2,13 @@ import { createContext, useContext, useState } from "react";
 
 const ConversationContext = createContext();
 
-// eslint-disable-next-line react/prop-types
 function ConversationProvider({ children }) {
   const [selectedUser, setSelectedUser] = useState();
+  const [messages, setMessages] = useState([]);
   return (
-    <ConversationContext.Provider value={{ selectedUser, setSelectedUser }}>
+    <ConversationContext.Provider
+      value={{ selectedUser, setSelectedUser, messages, setMessages }}
+    >
       {children}
     </ConversationContext.Provider>
   );

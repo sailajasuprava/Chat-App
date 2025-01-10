@@ -2,7 +2,6 @@ import { createContext, useContext, useState } from "react";
 
 const AuthContext = createContext();
 
-// eslint-disable-next-line react/prop-types
 function AuthProvider({ children }) {
   const [auth, setAuth] = useState(localStorage.getItem("chatapp"));
   return (
