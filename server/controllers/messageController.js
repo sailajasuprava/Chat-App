@@ -36,4 +36,25 @@ const createMessage = async (req, res, next) => {
   }
 };
 
-module.exports = { createMessage };
+const getMessages = async (req, res, next) => {
+  try {
+    const { receiverId } = req.params;
+    const senderId = req.user._id;
+
+    const conversation = await Conversation.findOne({
+      participants: { $all: [receiverId, senderId] },
+    }).populate("messages");
+
+    const messages = conversation?.messages || [];
+
+    res.status(200).json({
+      status: "success",
+      message: "Message sent successfully",
+      data: messages,
+    });
+  } catch (err) {
+    next(err);
+  }
+};
+
+module.exports = { createMessage, getMessages };

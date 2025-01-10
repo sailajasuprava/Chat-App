@@ -22,7 +22,11 @@
     "no-unused-vars": [
       "error",
       { "argsIgnorePattern": "req|res|next|val|doc|docs" }
-    ]
+    ],
+    "parserOptions": {
+      // Required for certain syntax usages
+      "ecmaVersion": 2020
+    }
   }
 }
 
