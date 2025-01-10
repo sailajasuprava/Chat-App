@@ -1,7 +1,12 @@
+import { useConversation } from "../../context/ConversationContext";
 import MessageInput from "./MessageInput";
 import Messages from "./Messages";
+import NoChatSelected from "./NoChatSelected";
 
 function Right() {
+  const { selectedUser } = useConversation();
+
+  if (!selectedUser) return <NoChatSelected />;
   return (
     <div className="md:min-w-[450px] flex flex-col">
       <>

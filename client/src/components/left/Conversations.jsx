@@ -4,7 +4,6 @@ import toast from "react-hot-toast";
 
 function Conversations() {
   const [users, setUsers] = useState([]);
-  const [selected, setSelected] = useState();
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
@@ -20,7 +19,6 @@ function Conversations() {
       if (!res.ok) {
         throw new Error(data.message);
       }
-      console.log(data);
 
       setUsers(data.data);
     } catch (error) {
@@ -33,12 +31,7 @@ function Conversations() {
   return (
     <div className="py-2 flex flex-col overflow-auto">
       {users.map((user) => (
-        <Conversation
-          key={user._id}
-          user={user}
-          selected={selected}
-          setSelected={setSelected}
-        />
+        <Conversation key={user._id} user={user} />
       ))}
       {isLoading ? (
         <span className="loading loading-spinner mx-auto"></span>

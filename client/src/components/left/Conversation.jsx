@@ -1,14 +1,24 @@
+import { useEffect } from "react";
+import { useConversation } from "../../context/ConversationContext";
+
 /* eslint-disable react/prop-types */
-function Conversation({ user, selected, setSelected }) {
+function Conversation({ user }) {
+  const { selectedUser, setSelectedUser } = useConversation();
+
+  useEffect(() => {
+    return () => setSelectedUser(null);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const { username, profilePic, _id } = user;
 
   return (
     <>
       <div
         className={`flex gap-2 items-center hover:bg-sky-500 rounded p-2 py-1 cursor-pointer ${
-          selected === _id ? "bg-sky-500" : ""
+          selectedUser?._id === _id ? "bg-sky-500" : ""
         }`}
-        onClick={() => setSelected(_id)}
+        onClick={() => setSelectedUser(user)}
       >
         <div className="avatar online">
           <div className="w-12 rounded-full">
