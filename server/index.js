@@ -8,11 +8,10 @@ const AppError = require("./utils/appArror");
 const authRouter = require("./routes/authRoutes");
 const messageRouter = require("./routes/messageRoutes");
 const userRouter = require("./routes/userRoutes");
+const { app, server } = require("./utils/socket");
 
 const port = process.env.PORT || 3000;
 const DB = process.env.DB_URL;
-
-const app = express();
 
 mongoose
   .connect(DB, {
@@ -34,6 +33,6 @@ app.all("*", (req, res, next) => {
 
 app.use(globalErrorHandler);
 
-app.listen(port, () => {
+server.listen(port, () => {
   console.log(`Server running on port ${port}...`);
 });
