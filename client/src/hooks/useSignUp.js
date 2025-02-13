@@ -1,6 +1,6 @@
 import { useState } from "react";
 import toast from "react-hot-toast";
-import { useAuth } from "../context/authContext";
+import { useAuth } from "../context/AuthContext";
 
 function useSignUp() {
   const [isLoading, setIsLoading] = useState(false);
@@ -54,8 +54,8 @@ function useSignUp() {
       }
 
       toast.success(data.message);
-      localStorage.setItem("chatapp", data.userId);
-      setAuth(data.userId);
+      localStorage.setItem("chatapp", JSON.stringify(data.data));
+      setAuth(data.data);
       setInputs({
         fullname: "",
         username: "",

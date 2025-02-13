@@ -39,7 +39,7 @@ const signUp = async (req, res, next) => {
     res.status(201).json({
       status: "success",
       message: "User created successfully",
-      userId: newUser._id,
+      data: newUser,
     });
   } catch (err) {
     next(err);
@@ -64,7 +64,7 @@ const logIn = async (req, res, next) => {
     res.status(200).json({
       status: "success",
       message: "login successful",
-      userId: user._id,
+      data: user,
     });
   } catch (err) {
     next(err);
@@ -88,6 +88,7 @@ const protect = async (req, res, next) => {
     }
 
     const payload = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
+
     if (!payload.id) {
       return next(new AppError("Invalid token."), 401);
     }

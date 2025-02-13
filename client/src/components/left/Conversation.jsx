@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { useConversation } from "../../context/ConversationContext";
 
-/* eslint-disable react/prop-types */
 function Conversation({ user }) {
   const { selectedUser, setSelectedUser } = useConversation();
 

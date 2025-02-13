@@ -14,6 +14,7 @@ function Messages() {
         if (!res.ok) {
           throw new Error(data.message);
         }
+        console.log(data.data);
 
         setMessages(data.data);
       } catch (error) {
