@@ -4,13 +4,22 @@ import { useAuth } from "./AuthContext";
 const SocketContext = createContext();
 
 function SocketProvider({ children }) {
-  const [socket, setSocket] = useState();
+  const [socket, setSocket] = useState(null);
+  const [onlineUsers, setOnlineUsers] = useState([]);
   const { auth } = useAuth();
 
   useEffect(() => {
     if (auth) {
-      const socket = io("http://localhost:8000");
+      const socket = io("http://localhost:8000", {
+        query: {
+          userId: auth._id,
+        },
+      });
       setSocket(socket);
+
+      socket.on("getOnlineUsers", (users) => {
+        setOnlineUsers(users);
+      });
 
       return () => socket.close();
     } else {
@@ -23,7 +32,9 @@ function SocketProvider({ children }) {
   }, [auth]);
 
   return (
-    <SocketContext.Provider value={{ socket, setSocket }}>
+    <SocketContext.Provider
+      value={{ socket, setSocket, onlineUsers, setOnlineUsers }}
+    >
       {children}
     </SocketContext.Provider>
   );

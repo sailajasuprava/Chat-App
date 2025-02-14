@@ -4,6 +4,7 @@ const AuthContext = createContext();
 
 function AuthProvider({ children }) {
   const [auth, setAuth] = useState(JSON.parse(localStorage.getItem("chatapp")));
+
   return (
     <AuthContext.Provider value={{ auth, setAuth }}>
       {children}
