@@ -31,7 +31,6 @@ function Conversation({ user }) {
         <div className="flex flex-col flex-1">
           <div className="flex gap-3 justify-between">
             <p className="font-bold text-gray-200">{username}</p>
-            <span className="text-xl">🎃</span>
           </div>
         </div>
       </div>

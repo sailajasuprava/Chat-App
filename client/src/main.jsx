@@ -7,13 +7,13 @@ import ConversationProvider from "./context/ConversationContext.jsx";
 import SocketProvider from "./context/SocketContext.jsx";
 
 createRoot(document.getElementById("root")).render(
-  <StrictMode>
-    <AuthProvider>
-      <ConversationProvider>
-        <SocketProvider>
-          <App />
-        </SocketProvider>
-      </ConversationProvider>
-    </AuthProvider>
-  </StrictMode>
+  // <StrictMode>
+  <AuthProvider>
+    <ConversationProvider>
+      <SocketProvider>
+        <App />
+      </SocketProvider>
+    </ConversationProvider>
+  </AuthProvider>
+  // </StrictMode>
 );

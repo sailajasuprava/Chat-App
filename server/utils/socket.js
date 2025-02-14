@@ -13,6 +13,10 @@ const io = new Server(server, {
   },
 });
 
+const getReceiverSocketId = (receiverId) => {
+  return onlineUsers[receiverId];
+};
+
 const onlineUsers = {};
 
 io.on("connection", (socket) => {
@@ -33,4 +37,4 @@ io.on("connection", (socket) => {
   });
 });
 
-module.exports = { io, app, server };
+module.exports = { io, app, server, getReceiverSocketId };
